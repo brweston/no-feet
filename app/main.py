@@ -38,10 +38,10 @@ def move():
     data = bottle.request.json
 
     #Genome calculations:
-    a = np.matrix([[0.2, 0.5, 0.4, 0.3], [0.6, 0.9, 0.5, 0.2], [0.2, 0.1, 0.8, 0.7],
-               [0.3, 0.5, 0.2, 0.5], [0.2, 0.7, 0.4, 0.9], [0.3, 0.3, 0.7, 0.1],
-               [0.2, 0.5, 0.6, 0.9], [0.6, 0.2, 0.4, 0.6], [0.2, 0.6, 0.8, 0.2],
-               [0.6, 0.8, 0.6, 0.9]])
+    a = np.matrix([[random.random(), random.random(), random.random(), random.random()], [random.random(), random.random(), random.random(), random.random()], [random.random(), random.random(), random.random(), random.random()],
+               [random.random(), random.random(), random.random(), random.random()], [random.random(), random.random(), random.random(), random.random()], [random.random(), random.random(), random.random(), random.random()],
+               [random.random(), random.random(), random.random(), random.random()], [random.random(), random.random(), random.random(), random.random()], [random.random(), random.random(), random.random(), random.random()],
+               [random.random(), random.random(), random.random(), random.random()]])
 
     b = np.matrix([[random.random()], [random.random()], [random.random()], [random.random()], [random.random()],
                    [random.random()], [random.random()], [random.random()], [random.random()], [random.random()]])
@@ -57,24 +57,34 @@ def move():
     dX = snakeHeadX - snakeBodyX
     dY = snakeHeadY - snakeBodyY
 
-    
+    print "SnakeHeadX = ", snakeHeadX, "\n"
+    print "SnakeHeadY = ", snakeHeadY, "\n"
 
-    if (dX > 0):
-        #dont' move left
+    boardWidth = data["board"]["width"]
+    boardHeight = data["board"]["height"]
+
+    #Don't run into self or wall
+    if ((dX > 0) or ((snakeHeadX - 1) < 0)):
+        #don't move left
+        print "don't move left"
         outputVector[2] *= 0
-    elif (dX < 0):
+    if ((dX < 0) or ((snakeHeadX + 1) == boardWidth)):
         #don't move right
+        print "don't move right"
         outputVector[3] *= 0
-    elif (dY > 0):
+    if ((dY > 0) or ((snakeHeadY - 1) < 0)):
         #don't move up
+        print "don't move up"
         outputVector[0] *= 0
-    elif (dY < 0):
+    if ((dY < 0) or ((snakeHeadY + 1) == boardHeight)):
         #don't move down
+        print "don't move down"
         outputVector[1] *= 0
 
+
     directions = ['up', 'down', 'left', 'right']
+    print outputVector
     direction = directions[np.argmax(outputVector)]
-    #direction = random.choice(directions)
 
     print "Moving %s" % direction
     return MoveResponse(direction)
