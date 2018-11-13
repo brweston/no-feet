@@ -57,6 +57,8 @@ def move():
     dX = snakeHeadX - snakeBodyX
     dY = snakeHeadY - snakeBodyY
 
+    
+
     if (dX > 0):
         #dont' move left
         outputVector[2] *= 0
