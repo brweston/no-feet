@@ -1,20 +1,29 @@
-def collisionCheck(dX, dY, shX, shY, bW, bH):
-	#Don't run into self or wall
-    if ((dX > 0) or ((shX - 1) < 0)):
-        print ">> don't move left"
-        #outputVector[2] *= 0
-        n = 2
-    if ((dX < 0) or ((shX + 1) == bW)):
-        print ">> don't move right"
-        #outputVector[3] *= 0
-        n = 3
-    if ((dY > 0) or ((shY - 1) < 0)):
-        print ">> don't move up"
-        #outputVector[0] *= 0
-        n = 0
-    if ((dY < 0) or ((shY + 1) == bH)):
-        print ">> don't move down"
-        #outputVector[1] *= 0
-        n = 1
+def basicAI(vec, dX, dY, sHX, sHY, bW, bH):
+    #vec represents the vector of direction weights
+    #dX and dY represent whether the second body part is above, below, left or right of the head (-1, 0 or 1)
+    #sHX and sHY are coords of snake head
+    #bW and bH are dimensions of board
 
-    return n
+    if ((dX > 0) or ((sHX - 1) < 0)):
+        #print ">> don't move left"
+        vec[2] = 0
+    if ((dX < 0) or ((sHX + 1) == bW)):
+        #print ">> don't move right"
+        vec[3] = 0
+    if ((dY > 0) or ((sHY - 1) < 0)):
+        #print ">> don't move up"
+        vec[0] = 0
+    if ((dY < 0) or ((sHY + 1) == bH)):
+        #print ">> don't move down"
+        vec[1] = 0
+    #print "vec: ", vec
+    return vec
+
+def getGenome(fileName):
+    #Returns a 1D array (type double) of the genome values stored in a text file
+    with open(fileName, 'r') as genomeFile:
+        #g is a placeholder array for the genome matrix
+        g = genomeFile.read().replace('\n', ' ') #remove new line characters
+        g = g.split(' ') #seperate values into 1D array
+
+    return g
