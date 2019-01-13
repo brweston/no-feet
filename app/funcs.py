@@ -27,3 +27,23 @@ def getGenome(fileName):
         g = g.split(' ') #seperate values into 1D array
 
     return g
+
+def endGame():
+    # Stuff to do when snake dies:
+
+    return 0
+    # Check genome level
+    # Reproduce if level is high enough
+    # Change weights of child genomes to reflect cause of death
+
+def causeOfDeath(data):
+    print "Data in function: ", data
+
+    if (data["you"]["health"] == 0):
+        #Snake died of starvation
+        print "Starvation"
+
+    snakeCoords = data["you"]["body"]
+    for snakeBodyPart in snakeCoords:
+        for snake
+    return 0

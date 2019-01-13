@@ -62,11 +62,7 @@ def move():
                [float(g[12]), float(g[13]), float(g[14]), float(g[15])], [float(g[16]), float(g[17]), float(g[18]), float(g[19])], [float(g[20]), float(g[21]), float(g[22]), float(g[23])],
                [float(g[24]), float(g[25]), float(g[26]), float(g[27])], [float(g[28]), float(g[29]), float(g[30]), float(g[31])], [float(g[32]), float(g[33]), float(g[34]), float(g[35])],
                [float(g[36]), float(g[37]), float(g[38]), float(g[39])]])
-
-    #i=0
-    #j=0
-    #for x in g:
-        #
+        
 
     #Game data vector
     gameDataVec = np.matrix([[random.random()], [random.random()], [random.random()], [random.random()], [random.random()],
@@ -99,7 +95,11 @@ def move():
 @bottle.post('/end')
 def end():
     data = bottle.request.json
-    print data
+
+    print "Data out of function: ", data
+    #Excecute end of game tasks
+    funcs.causeOfDeath(data)
+    #funcs.endGame()
 
     print "Game %s ended" % data["game"]["id"]
 
