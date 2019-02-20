@@ -19,6 +19,7 @@ def basicAI(vec, dX, dY, sHX, sHY, bW, bH):
     #print "vec: ", vec
     return vec
 
+#comments
 def getGenome(fileName):
     #Returns a 1D array (type double) of the genome values stored in a text file
     with open(fileName, 'r') as genomeFile:
