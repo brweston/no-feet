@@ -45,6 +45,5 @@ def causeOfDeath(data):
         print "Starvation"
 
     snakeCoords = data["you"]["body"]
-    for snakeBodyPart in snakeCoords:
-        for snake
+    #for snakeBodyPart in snakeCoords:
     return 0
