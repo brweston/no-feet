@@ -1,4 +1,4 @@
-def basicAI(vec, dX, dY, sHX, sHY, bW, bH):
+def collisionCheck(vec, dX, dY, sHX, sHY, bW, bH):
     #vec represents the vector of direction weights
     #dX and dY represent whether the second body part is above, below, left or right of the head (-1, 0 or 1)
     #sHX and sHY are coords of snake head
@@ -19,31 +19,7 @@ def basicAI(vec, dX, dY, sHX, sHY, bW, bH):
     #print "vec: ", vec
     return vec
 
-#comments
-def getGenome(fileName):
-    #Returns a 1D array (type double) of the genome values stored in a text file
-    with open(fileName, 'r') as genomeFile:
-        #g is a placeholder array for the genome matrix
-        g = genomeFile.read().replace('\n', ' ') #remove new line characters
-        g = g.split(' ') #seperate values into 1D array
-
-    return g
-
-def endGame():
-    # Stuff to do when snake dies:
-
-    return 0
-    # Check genome level
-    # Reproduce if level is high enough
-    # Change weights of child genomes to reflect cause of death
-
-def causeOfDeath(data):
-    print "Data in function: ", data
-
-    if (data["you"]["health"] == 0):
-        #Snake died of starvation
-        print "Starvation"
-
-    snakeCoords = data["you"]["body"]
-    #for snakeBodyPart in snakeCoords:
-    return 0
+def getBoardArray(boardData):
+    arr = 0
+    #foodData = boardData
+    return arr
